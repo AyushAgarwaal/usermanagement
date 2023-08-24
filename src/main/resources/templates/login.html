@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/login.css">
+    <title>Login Page</title>
+</head>
+
+<body>
+
+    <section>
+        <form th:action="@{/addUser}" th:object="${login}">
+            <div th:if="${notvalid}" class="invalid">
+                <p id="my-element">Invalid Credentials!!</p>
+            </div>
+            <div class="container" th:style="'border: 2px solid black;display: flex;' + 
+                           'justify-content: center;flex-direction: column;' + 
+                           'width: 300px;height: 286px;margin: 0;position: absolute;' + 
+                           'top: 50%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);' + 
+                           'padding: 10px;background-color:whitesmoke; border-radius:15px'">
+                <h3 style="text-align: center;">Login Page</h3>
+                <label for="uname" style="text-align: center;"><b>Username</b></label>
+                <input type="text" placeholder="login id" name="uname" th:required="required">
+                <br>
+                <label for="psw" style="text-align: center;"><b>Password</b></label>
+                <input type="password" placeholder="Password should not more than 6 characters" name="psw" th:required="required"
+                    autocomplete="off" minlength="4" maxlength="6">
+                <br>
+                <button type="submit" class="login-btn" style="background-color:green;color:white;font-size:1.0rem;cursor:pointer"
+                    >Submit</button>
+                <div th:if="${usertype}" class="user">
+                    <p>Logging in as User</p>
+                </div>
+            </div>
+        </form>
+    </section>
+
+</body>
+
+</html>
